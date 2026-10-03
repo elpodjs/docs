@@ -1,5 +1,5 @@
 ---
-title: "Elpod documentation"
+title: "Elpod docs"
 label: "Overview"
 description: "Elpod is an enterprise-friendly structure for Elysia applications on Bun."
 section: foundations

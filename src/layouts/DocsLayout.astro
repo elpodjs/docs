@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Header from "../components/Header.astro";
 import DocsSidebar from "../components/DocsSidebar.astro";
 import DocCallout from "../components/DocCallout.astro";
@@ -10,10 +11,20 @@ const {
   title,
   description,
   section,
+  docId = "",
   showAlpha = true,
 } = Astro.props;
 const pageTitle = `${title} — Elpod Docs`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const entries = await getCollection("docs");
+const sectionOrder = { foundations: 1, runtime: 2, security: 3, operations: 4 } as const;
+const orderedEntries = entries
+  .filter((entry) => entry.id !== "index")
+  .sort((a, b) => sectionOrder[a.data.section] - sectionOrder[b.data.section] || a.data.order - b.data.order);
+const currentIndex = orderedEntries.findIndex((entry) => entry.id === docId);
+const previous = currentIndex > 0 ? orderedEntries[currentIndex - 1] : null;
+const next = currentIndex >= 0 && currentIndex < orderedEntries.length - 1 ? orderedEntries[currentIndex + 1] : null;
+const hrefFor = (id: string) => `/docs/${id}/`;
 ---
 <!doctype html>
 <html lang="en">
@@ -31,7 +42,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
   </head>
-  <body class="docs-body">
+  <body class:list={['docs-body', { 'docs-home-body': docId === 'index' }]}>
     <a class="skip-link" href="#doc-content">Skip to documentation</a>
     <Header />
     <div class="docs-shell">
@@ -42,9 +53,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           <span>{section.toUpperCase()}</span>
         </div>
         <article class="doc-prose">
-          <p class="section-kicker">{section} / reference</p>
-          <h1>{title}</h1>
-          <p class="doc-description">{description}</p>
+          <div class:list={['docs-home-hero', { 'docs-home-hero-active': docId === 'index' }]}>
+            <div>
+              <p class="section-kicker">{section} / reference</p>
+              <h1>{title}</h1>
+              <p class="doc-description">{description}</p>
+            </div>
+            {docId === 'index' && (
+              <aside class="docs-home-map" aria-label="Elpod composition map">
+                <div class="docs-home-map-label"><span>COMPOSITION MAP</span><span>01 / 03</span></div>
+                <ol>
+                  <li><span><b>Elysia</b><small>native route surface</small></span></li>
+                  <li><span><b>Elpod</b><small>explicit composition</small></span></li>
+                  <li><span><b>Your application</b><small>features + boundaries</small></span></li>
+                </ol>
+              </aside>
+            )}
+          </div>
           {showAlpha && (
             <DocCallout>
               Elpod is early-stage. Pin Elpod and Bun versions, read the changelog before upgrades, and run <code>elpod audit</code> and <code>elpod doctor</code> in CI.
@@ -52,6 +77,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           )}
           <slot />
         </article>
+        {docId !== 'index' && (
+          <nav class="docs-pager" aria-label="Documentation navigation">
+            {previous ? (
+              <a href={hrefFor(previous.id)}>
+                <span class="docs-next-label">← Previous</span>
+                <strong>{previous.data.label}</strong>
+              </a>
+            ) : <a aria-disabled="true" href="#" tabindex="-1"><span></span></a>}
+            {next ? (
+              <a href={hrefFor(next.id)}>
+                <span class="docs-next-label">Next →</span>
+                <strong>{next.data.label}</strong>
+              </a>
+            ) : <a aria-disabled="true" href="#" tabindex="-1"><span></span></a>}
+          </nav>
+        )}
         <footer class="docs-footer">
           <span>ELPOD / WORKING ALPHA</span>
           <a href="https://github.com/acefolioDev/elpod" target="_blank" rel="noreferrer">Source on GitHub ↗</a>

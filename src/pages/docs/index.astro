@@ -6,6 +6,6 @@ const entry = await getEntry("docs", "index");
 if (!entry) throw new Error("Documentation index is missing");
 const { Content } = await render(entry);
 ---
-<DocsLayout {...entry.data} showAlpha={false}>
+<DocsLayout {...entry.data} docId={entry.id} showAlpha={false}>
   <Content />
 </DocsLayout>

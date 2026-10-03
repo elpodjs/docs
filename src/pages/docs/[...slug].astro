@@ -17,6 +17,6 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
-<DocsLayout {...entry.data} showAlpha={entry.id !== "getting-started"}>
+<DocsLayout {...entry.data} docId={entry.id} showAlpha={entry.id !== "getting-started"}>
   <Content />
 </DocsLayout>
