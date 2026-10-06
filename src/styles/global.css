@@ -9,11 +9,8 @@ code, pre { font-family: var(--sp-mono); }
 .skip-link { position: fixed; left: 16px; top: -60px; z-index: 20; background: var(--sp-accent); color: #14110a; padding: 10px 14px; font-family: var(--sp-mono); font-size: 12px; }
 .skip-link:focus { top: 16px; }
 .site-header { width: min(var(--sp-max), calc(100% - 64px)); height: 72px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--sp-border); position: relative; z-index: 3; }
-.wordmark { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; letter-spacing: -.04em; }
-.wordmark-mark { display: grid; gap: 3px; width: 20px; }
-.wordmark-mark i { display: block; height: 3px; background: var(--sp-accent); border-radius: 2px; }
-.wordmark-mark i:nth-child(2) { width: 14px; background: var(--sp-elysia); }
-.wordmark-mark i:nth-child(3) { width: 8px; }
+.wordmark { display: inline-flex; align-items: center; width: 112px; }
+.wordmark img { display: block; width: 100%; height: auto; }
 .site-header nav { display: flex; align-items: center; gap: 30px; margin-left: auto; margin-right: 34px; color: var(--sp-muted); font-family: var(--sp-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
 .site-header nav a, .footer-docs { transition: color .2s ease; }
 .site-header nav a:hover, .footer-docs:hover { color: var(--sp-text); }

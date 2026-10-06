@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://github.com/acefolioDev/elpod/sitemap-index.xml
+Sitemap: https://elpod.vercel.app/sitemap-index.xml
