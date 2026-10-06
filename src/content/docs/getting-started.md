@@ -27,15 +27,12 @@ Install Bun 1.4 or newer. Elpod is TypeScript-only and publishes a Bun ESM runti
 ## Create and run an application
 
 ```bash
-mkdir hello-elpod
-cd hello-elpod
-bun init -y
-bun add elpod elysia
-bunx elpod init
+bun create elpod app
+cd app
 bun run dev
 ```
 
-The initializer creates `src/main.ts`, `src/app.ts`, one `hello` feature, shared infrastructure, TypeScript configuration, scripts, and a starter container/deployment shape. Installing the package alone does not modify a project.
+The generator installs `@elpod/core` and `@elpod/cli`, then creates `src/main.ts`, `src/app.ts`, one `hello` feature, shared infrastructure, TypeScript configuration, scripts, and a starter container/deployment shape.
 
 Open `http://localhost:3000/hello/`. The starter controller returns a small JSON response. `src/main.ts` uses `start()` to bootstrap the graph, call native Elysia `listen()`, and install graceful shutdown.
 
@@ -55,7 +52,7 @@ export class GreetingService {
 ```ts
 // src/features/greeting/greeting.controller.ts
 import { t } from "elysia";
-import type { ElpodElysia } from "elpod";
+import type { ElpodElysia } from "@elpod/core";
 import { GreetingService } from "./greeting.service";
 
 export class GreetingController {
@@ -76,7 +73,7 @@ export class GreetingController {
 
 ```ts
 // src/features/greeting/greeting.pod.ts
-import { pod } from "elpod";
+import { pod } from "@elpod/core";
 import { GreetingController } from "./greeting.controller";
 import { GreetingService } from "./greeting.service";
 
@@ -90,7 +87,7 @@ export const greeting = pod({
 
 ```ts
 // src/app.ts
-import { application } from "elpod";
+import { application } from "@elpod/core";
 import { greeting } from "./features/greeting/greeting.pod";
 
 export const app = application({ features: [greeting] });
@@ -114,7 +111,7 @@ Use `bunx elpod make:feature users` to generate a controller, pod, and service. 
 ## A production-shaped entrypoint
 
 ```ts
-import { defineConfig, env, healthRoutes, start } from "elpod";
+import { defineConfig, env, healthRoutes, start } from "@elpod/core";
 import { app } from "./app";
 
 const config = defineConfig({

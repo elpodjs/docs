@@ -54,4 +54,4 @@ If you want the scenic route, take the ship around in this order:
 
 [CLI](/docs/cli/) · [Deployment](/docs/deployment/) · [FAQ](/docs/faq/) · [Glossary](/docs/glossary/)
 
-All application examples use Bun ESM and import the public package: `import { ... } from "elpod"`.
+All application examples use Bun ESM and import the public package: `import { ... } from "@elpod/core"`.
