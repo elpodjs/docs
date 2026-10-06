@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://github.com/acefolioDev/elpod",
+  site: "https://elpod.vercel.app",
   output: "static",
   trailingSlash: "always",
   integrations: [sitemap()],
