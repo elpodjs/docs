@@ -1,10 +1,12 @@
 ---
-title: "Deployment: turn the local ship into a fleet member"
+title: "Deploying Elpod Applications on Bun"
 label: "Deployment"
-description: "Local development asks, “does it run?” Production asks, “can it restart, drain, scale, observe, and keep secrets safe?” Deployment is the set of decisions that turns one healthy process into a responsible fleet member."
+description: "Prepare an Elpod application for Bun deployment with health checks, graceful shutdown, configuration validation, and architecture audits."
 section: operations
 order: 20
 ---
+
+Deploying an Elpod service means operating a Bun process that serves native Elysia routes. Use this guide to connect Elpod startup and shutdown hooks to readiness, configuration, resource cleanup, and your platform controls.
 
 ## The idea
 
@@ -57,3 +59,7 @@ Elpod provides explicit composition, DI/lifecycle ownership, native HTTP hooks, 
 - Running migrations independently on every startup without a shared lock.
 - Assuming container non-root settings replace application authorization.
 - Deploying an unpinned alpha dependency.
+
+## Related concepts
+
+[Health and shutdown](/docs/health-and-shutdown/) · [Configuration](/docs/configuration/) · [Observability](/docs/observability/) · [CLI audits](/docs/cli/).

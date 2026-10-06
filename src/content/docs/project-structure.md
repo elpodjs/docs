@@ -1,10 +1,12 @@
 ---
-title: "Project structure and the architecture seal: make the map match the city"
+title: "Project Structure for Large Elysia Applications"
 label: "Project structure"
-description: "As a codebase grows, the hard question is not “where can I put this file?” It is “who owns this idea, and who is allowed to depend on it?” A good project structure answers that question before a pull request turns the answer into archaeology."
+description: "Organize a Bun and Elysia backend by feature, wire pods explicitly, and validate dependency boundaries with Elpod architecture checks."
 section: foundations
 order: 20
 ---
+
+A large Elysia application on Bun needs clear ownership for routes, services, and infrastructure. Elpod organizes that work into feature pods and validates the declared architecture; use this layout as the number of features and contributors grows.
 
 ## The idea
 
@@ -66,3 +68,7 @@ Use it when several teams or domains need clear ownership, when startup wiring s
 ## Production notes
 
 The seal checks structure and graph consistency, not business correctness, database migrations, permissions, dependency vulnerabilities, or cloud configuration. Run it and `audit` in CI, then add your own tests and deployment policy. See [Deployment](/docs/deployment/) and [Testing](/docs/testing/).
+
+## Related concepts
+
+[Feature pods](/docs/features-and-pods/) · [Provider boundaries](/docs/providers-uses-exports/) · [CLI architecture audits](/docs/cli/).

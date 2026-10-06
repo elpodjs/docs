@@ -1,10 +1,12 @@
 ---
-title: "Rate limiting: protect the queue at the door"
+title: "Rate Limiting for Elpod Applications"
 label: "Rate limiting"
-description: "Rate limiting is crowd control."
+description: "Apply rate limits at Elysia boundaries and use a distributed store when multiple Bun processes must share counters."
 section: security
 order: 50
 ---
+
+Rate limiting protects an Elysia endpoint from excessive traffic in an Elpod application on Bun. Use local counters only for local or single-process needs; distributed deployments need shared counters.
 
 ## The idea
 
@@ -41,3 +43,7 @@ Use different keys and limits for login, expensive endpoints, public traffic, an
 ## Production notes
 
 Implement a shared atomic store for replicas, define fail-open versus fail-closed behavior, and monitor rejected requests. Rate limiting is not DDoS protection; keep edge/network controls in place.
+
+## Related concepts
+
+[Cache and locks](/docs/cache-and-locks/) · [Brute force protection](/docs/security/brute-force-and-signed-urls/) · [Security overview](/docs/security/overview/).

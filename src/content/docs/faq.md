@@ -1,14 +1,26 @@
 ---
-title: "FAQ: questions from the curious crew"
+title: "Elpod FAQ: Bun, Elysia, DI, and Maturity"
 label: "FAQ"
-description: "Elpod is deliberately a helpful layer around Elysia, not a replacement for it."
+description: "Answers to common questions about Elpod, Elysia, Bun, decorator-free dependency injection, pods, compatibility, and working-alpha status."
 section: operations
 order: 30
 ---
 
 ## The short version
 
-Elpod is deliberately a helpful layer around Elysia, not a replacement for it. If you remember one sentence, remember this: **Elysia handles the request; Elpod handles the structure around the request.**
+Elpod is an early-stage, decorator-free application framework for modular Elysia services on Bun. It adds explicit constructor dependency injection, feature pods, provider lifetimes, lifecycle management, and architecture checks. Elysia remains the native HTTP and routing layer.
+
+## Does Elpod run on Bun?
+
+Yes. `@elpod/core` is built for Bun ESM and requires Bun 1.4 or newer. Create an application with `bun create elpod my-app`; see [getting started](/docs/getting-started/).
+
+## Does Elpod support dependency injection without decorators or reflect-metadata?
+
+Yes. Classes declare constructor dependencies with a static `inject` tuple or its `needs` alias. Providers are registered explicitly, and Elpod validates the dependency graph. See [dependency injection](/docs/dependency-injection/).
+
+## Does Elpod preserve Elysia type inference and Eden Treaty?
+
+Elpod controllers register native Elysia routes. `ElpodContract<typeof app>` composes the pod route types for Eden Treaty clients. Routes added through untyped bootstrap configuration or native plugins are runtime routes outside that contract. See [routing and controllers](/docs/routing-and-controllers/).
 
 ## Is Elpod a replacement for Elysia?
 
@@ -38,7 +50,19 @@ They are useful for local and single-process workloads. They do not coordinate r
 
 ## How is Elpod different from Nest?
 
-Elpod intentionally keeps Elysia’s native APIs and uses explicit values and constructors. It does not add decorators, metadata-driven modules, or a parallel controller/router abstraction.
+Elpod intentionally keeps Elysia’s native APIs and uses explicit values and constructors. It does not add decorators, metadata-driven modules, or a parallel controller/router abstraction. NestJS has a more mature ecosystem and broader established integrations. Read the [Elpod and NestJS comparison](/docs/compare/elpod-vs-nestjs/) for trade-offs.
+
+## Can I add Elpod to an existing Elysia application?
+
+You can move native routes into pod controllers and keep using Elysia hooks, plugins, and schemas. This requires deliberate migration of composition and route types; Elpod is not a drop-in wrapper around every existing application. See [routing](/docs/routing-and-controllers/) and [plugins](/docs/plugins/).
+
+## Can I use Prisma or Drizzle? Does Elpod include an ORM?
+
+Elpod does not include an ORM. Register your chosen client through a provider and own its connection, transaction, migration, and disposal policy. See [database and migrations](/docs/database-and-migrations/).
+
+## Does Elpod include authentication?
+
+Elpod includes authentication boundary helpers, but your application chooses and configures its identity provider, credential validation, and storage. See [authentication](/docs/security/authentication/) and [sessions](/docs/security/sessions/).
 
 ## Can I return a `Response`?
 

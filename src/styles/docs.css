@@ -29,6 +29,9 @@
 .doc-prose > .section-kicker { margin: 0 0 20px; color: var(--sp-accent); }
 .doc-prose h1 { max-width: 720px; margin: 0; color: var(--sp-text); font-size: clamp(3rem, 4vw, 4.9rem); font-weight: 500; letter-spacing: -.065em; line-height: .95; }
 .doc-description { max-width: 600px; margin: 22px 0 36px; color: var(--sp-muted); font-size: 17px; line-height: 1.55; }
+.docs-breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 32px; color: var(--sp-muted); font-family: var(--sp-mono); font-size: 11px; line-height: 1.5; }
+.docs-breadcrumbs a { color: var(--sp-accent-bright); }
+.docs-breadcrumbs [aria-current="page"] { color: var(--sp-text); }
 .doc-prose h2, .doc-prose h3, .doc-prose h4 { position: relative; color: var(--sp-text); font-family: var(--sp-display); font-weight: 600; letter-spacing: -.045em; line-height: 1.14; scroll-margin-top: 100px; }
 .doc-prose h2 { margin: 76px 0 22px; padding-top: 24px; border-top: 1px solid var(--sp-border); font-size: 34px; }
 .doc-prose h2::before { content: "//"; margin-right: 12px; color: var(--sp-accent); font-family: var(--sp-mono); font-size: 11px; letter-spacing: 0; vertical-align: middle; }

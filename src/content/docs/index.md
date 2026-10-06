@@ -1,16 +1,16 @@
 ---
-title: "Elpod docs"
+title: "Elpod Documentation: Modular Elysia Applications on Bun"
 label: "Overview"
-description: "Elpod is an enterprise-friendly structure for Elysia applications on Bun."
+description: "Elpod is an early-stage, decorator-free application framework for modular Elysia services on Bun. Learn explicit DI, pods, native routing, and architecture checks."
 section: foundations
 order: 0
 ---
 
 > **Experimental / working alpha:** Elpod is early-stage. APIs and conventions may change between versions. Pin Elpod and Bun versions in production, read the changelog before upgrades, and run `elpod audit` and `elpod doctor` in CI.
 
-Welcome aboard. Think of an Elysia application as a fast ship: Elysia is the engine and steering wheel, while Elpod gives the crew named stations, supply routes, safety checks, and a launch checklist. You still steer the ship with Elysia; Elpod makes a growing codebase easier to navigate.
+Elpod is an early-stage, decorator-free application framework for modular Elysia applications on Bun. It adds explicit constructor dependency injection, feature boundaries called **pods**, provider lifetimes, lifecycle management, and architecture checks. Controllers register native Elysia routes; Elpod does not replace Elysia's router.
 
-Elpod is an enterprise-friendly structure for Elysia applications on Bun. It adds explicit constructor dependency injection, feature boundaries called **pods**, provider lifetimes, cross-cutting HTTP boundaries, and architecture checks. Routes remain native Elysia routes. There are no decorators and no parallel router.
+Use Elpod when an Elysia backend has enough services and teams that dependency ownership and feature boundaries need to be visible. For a small service that does not need those conventions, plain Elysia keeps the application simpler. Start with [a runnable feature](/docs/getting-started/), then read [dependency injection](/docs/dependency-injection/) and [feature pods](/docs/features-and-pods/).
 
 The core composition model, native controller routes, request scopes, typed configuration, structured errors, lifecycle handling, health routes, route inspection, and vendor-neutral observability boundaries are solid today. Database drivers, durable queues and event brokers, distributed cache and rate limiting, telemetry SDK/exporter setup, identity providers, and deployment hardening remain application-owned adapters or planned work. Treat the framework as a set of explicit boundaries, not a guarantee that your application is secure or distributed by default.
 
@@ -35,6 +35,7 @@ If you want the scenic route, take the ship around in this order:
 - Hardening a service: [Errors](/docs/errors/), [Health and shutdown](/docs/health-and-shutdown/), [Observability](/docs/observability/), [Security overview](/docs/security/overview/), and [Deployment](/docs/deployment/).
 - Building async workflows: [Events](/docs/events/), [Jobs](/docs/jobs/), and [Cache and locks](/docs/cache-and-locks/).
 - Looking up a feature: use the [CLI](/docs/cli/), [OpenAPI and routes](/docs/openapi-and-routes/), [Testing](/docs/testing/), or [Glossary](/docs/glossary/).
+- Choosing an approach: compare [Elpod and plain Elysia](/docs/compare/elpod-vs-elysia/) or [Elpod and NestJS](/docs/compare/elpod-vs-nestjs/).
 
 ## Documentation map
 

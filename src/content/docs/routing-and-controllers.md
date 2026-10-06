@@ -1,10 +1,12 @@
 ---
-title: "Routing and controllers: Elysia keeps the steering wheel"
+title: "Native Elysia Routing and Controllers in Elpod"
 label: "Routing and controllers"
-description: "Frameworks often make routing feel like filling out paperwork: add metadata here, decorate a method there, and hope another layer generates the route you meant."
+description: "Elpod controllers register native Elysia routes inside feature pods, preserving Elysia APIs and Eden Treaty type inference."
 section: foundations
 order: 60
 ---
+
+Elpod controllers register native Elysia routes inside feature pods on Bun. Use a controller when one feature needs an HTTP entrypoint and you want Elysia schemas, hooks, plugins, and Eden Treaty types to remain available.
 
 ## The idea
 
@@ -71,3 +73,7 @@ Use one controller as the HTTP entrypoint for a feature. Keep parsing and transp
 ## Production notes
 
 Validate request input and response output with Elysia schemas. Set a deliberate request-body limit in `bootstrap({ maxRequestBodyBytes })`, handle native streaming cleanup, and use `Native Response` only when its headers/status are intentional. See [OpenAPI](/docs/openapi-and-routes/) and [Errors](/docs/errors/).
+
+## Related concepts
+
+[OpenAPI and routes](/docs/openapi-and-routes/) · [Elysia plugins](/docs/plugins/) · [Dependency injection](/docs/dependency-injection/).

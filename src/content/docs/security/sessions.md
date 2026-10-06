@@ -1,10 +1,12 @@
 ---
-title: "Sessions: remember a browser without trusting its memory"
+title: "Sessions in Elpod Applications"
 label: "Sessions"
-description: "A browser needs a small “remember me” token, but the browser should not carry your whole user record or your permissions."
+description: "Manage browser sessions through native Elysia hooks and Elpod boundaries while keeping session storage application-owned."
 section: security
 order: 30
 ---
+
+Sessions connect repeated browser requests to a user identity in an Elpod application on Bun and Elysia. Use native request hooks and explicit providers while keeping session storage, rotation, and cookie policy application-owned.
 
 ## The idea
 
@@ -43,3 +45,7 @@ Cookie defaults are `HttpOnly`, `Secure`, `SameSite=Lax`, and `Path=/`. Expired 
 ## Production notes
 
 The store owns persistence, atomic deletion, revocation, idle/absolute expiry, session rotation, and multi-instance consistency. Add CSRF protection for cookie-authenticated state changes and never log session IDs.
+
+## Related concepts
+
+[Authentication](/docs/security/authentication/) · [CORS and CSRF](/docs/security/cors-csrf/) · [Security overview](/docs/security/overview/).

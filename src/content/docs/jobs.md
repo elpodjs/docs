@@ -1,10 +1,12 @@
 ---
-title: "Jobs, queues, workers, and schedulers: move work off the request path"
+title: "Jobs, Queues, and Workers in Elpod"
 label: "Jobs and queues"
-description: "An HTTP request is a guest at the front desk."
+description: "Move work outside HTTP requests with Elpod job boundaries; select and operate your own durable queue and scheduler."
 section: runtime
 order: 50
 ---
+
+Elpod job boundaries move work out of an Elysia request path in a Bun application. Use them for asynchronous tasks, while adding a durable queue and idempotent worker design when work must survive process loss.
 
 ## The idea
 
@@ -65,3 +67,7 @@ It is not a durable scheduler or cron engine. Use a deployment scheduler when ru
 ## Production notes
 
 The broker owns durability, visibility timeouts, acknowledgement, retries, worker groups, and dead letters. Design handlers to be idempotent and bounded, and monitor queue age, attempts, failures, and shutdown drain behavior.
+
+## Related concepts
+
+[Events](/docs/events/) · [Provider boundaries](/docs/providers-uses-exports/) · [Cache and locks](/docs/cache-and-locks/).

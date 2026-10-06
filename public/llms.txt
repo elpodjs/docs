@@ -1,0 +1,53 @@
+# Elpod
+
+> Elpod is an early-stage, decorator-free application framework for modular Elysia services on Bun. It adds explicit constructor dependency injection, feature pods, provider lifetimes, lifecycle management, and architecture checks while preserving native Elysia routes.
+
+- Canonical website: https://elpod.vercel.app/
+- Documentation: https://elpod.vercel.app/docs/
+- GitHub organization: https://github.com/elpodjs
+- Source: https://github.com/elpodjs/core
+- Documentation source: https://github.com/elpodjs/docs
+- Packages: `@elpod/core`, `@elpod/cli`, `create-elpod`
+- Runtime: Bun 1.4+ with Elysia; TypeScript and ESM
+- License: MIT
+- Status: working alpha; pin versions and review changes before upgrading
+
+## Start
+
+```sh
+bun create elpod my-app
+cd my-app
+bun run dev
+```
+
+Elpod uses native Elysia `routes(app)` methods in controllers. Classes declare constructor dependencies with `static readonly inject = [Service] as const` or `needs`. A `pod({...})` groups a controller, URL prefix, providers, and explicit dependency boundaries. `application({ features: [pod] })` assembles the application. Request-scoped providers are resolved through `injectHandler()`; `ElpodContract<typeof app>` exposes pod route types to Eden Treaty.
+
+```ts
+import { application, pod, type ElpodElysia } from "@elpod/core";
+
+class OrdersService { list() { return [{ id: "order-1" }]; } }
+class OrdersController {
+  static readonly inject = [OrdersService] as const;
+  constructor(private readonly orders: OrdersService) {}
+  routes(app: ElpodElysia) { return app.get("/", () => this.orders.list()); }
+}
+const orders = pod({ name: "orders", prefix: "/orders", controller: OrdersController, providers: [OrdersService] });
+export const app = application({ features: [orders] });
+```
+
+## Reference
+
+- [Getting started](https://elpod.vercel.app/docs/getting-started/)
+- [Dependency injection](https://elpod.vercel.app/docs/dependency-injection/)
+- [Feature pods](https://elpod.vercel.app/docs/features-and-pods/)
+- [Provider imports and exports](https://elpod.vercel.app/docs/providers-uses-exports/)
+- [Project structure](https://elpod.vercel.app/docs/project-structure/)
+- [Native Elysia routing and Eden Treaty](https://elpod.vercel.app/docs/routing-and-controllers/)
+- [Testing](https://elpod.vercel.app/docs/testing/)
+- [Security boundaries](https://elpod.vercel.app/docs/security/overview/)
+- [CLI and architecture audits](https://elpod.vercel.app/docs/cli/)
+- [Glossary](https://elpod.vercel.app/docs/glossary/)
+- [Elpod vs plain Elysia](https://elpod.vercel.app/docs/compare/elpod-vs-elysia/)
+- [Elpod vs NestJS](https://elpod.vercel.app/docs/compare/elpod-vs-nestjs/)
+
+Elpod is an application-structure layer, not an Elysia replacement, ORM, identity provider, durable broker, or deployment platform. Adapters and operational guarantees remain application-owned. This file is a convenience index for agents; the HTML documentation is the canonical reference.

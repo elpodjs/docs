@@ -1,10 +1,12 @@
 ---
-title: "Providers, uses, exports, and imports: the doors in your house"
+title: "Providers, Imports, and Exports in Elpod"
 label: "Providers and boundaries"
-description: "Think of an application as a house."
+description: "Learn how Elpod providers, uses, imports, and exports define visible dependencies between feature pods in a Bun and Elysia application."
 section: foundations
 order: 50
 ---
+
+Elpod providers supply dependencies to controllers and services in a Bun and Elysia application. Use `uses`, `imports`, and `exports` to state which pod owns a dependency and which other pods may consume it.
 
 ## The idea
 
@@ -102,3 +104,7 @@ Use application providers for shared infrastructure. Use feature providers for f
 ## Production notes
 
 These are in-process module boundaries, not network or security boundaries. Keep authorization in the called service/policy, not only in the importing feature. Shared singletons must be safe for concurrent requests and multiple tenants.
+
+## Related concepts
+
+[Dependency injection](/docs/dependency-injection/) · [Feature pods](/docs/features-and-pods/) · [Testing](/docs/testing/).

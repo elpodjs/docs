@@ -1,10 +1,12 @@
 ---
-title: "Cache and locks: shortcuts and one-at-a-time signs"
+title: "Cache and Lock Boundaries in Elpod"
 label: "Cache and locks"
-description: "A cache is a shortcut, not the source of truth."
+description: "Use Elpod cache and lock primitives with explicit providers; choose durable or distributed adapters for production needs."
 section: runtime
 order: 30
 ---
+
+Elpod keeps cache and lock dependencies explicit in a Bun and Elysia service. Use these boundaries when repeated reads or concurrent work need coordination, while choosing storage and distributed guarantees for the deployment you run.
 
 ## The idea
 
@@ -51,3 +53,7 @@ Use locks for stampede protection or a short-lived local critical section. A dis
 ## Production notes
 
 Implement `CacheStore` and `LockStore` with a shared system when replicas need coordination. Preserve `getOrSet` stampede protection atomically. Plan invalidation, outages, eviction, and observability; Elpod does not provide distributed consistency.
+
+## Related concepts
+
+[Provider boundaries](/docs/providers-uses-exports/) · [Jobs and queues](/docs/jobs/) · [Rate limiting](/docs/security/rate-limiting/).

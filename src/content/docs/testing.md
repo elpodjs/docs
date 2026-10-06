@@ -1,10 +1,12 @@
 ---
-title: "Testing: rehearse the mission before launch"
+title: "Testing Elpod Services and Elysia Routes"
 label: "Testing"
-description: "Unit tests inspect one tool at a time."
+description: "Test Elpod services with provider overrides and exercise native Elysia routes through the application test harness."
 section: runtime
 order: 100
 ---
+
+Elpod test utilities let Bun and Elysia applications replace providers while exercising real route composition. Use them when a service needs fast unit tests and the HTTP boundary needs integration tests with controlled dependencies.
 
 ## The idea
 
@@ -48,3 +50,7 @@ For a focused unit test, instantiate a service with explicit fakes directly. Use
 ## Production notes
 
 Use deterministic fake providers and an isolated database/schema. Add integration tests against your real database adapter and broker adapter; an in-memory queue or cache cannot prove distributed guarantees.
+
+## Related concepts
+
+[Dependency injection](/docs/dependency-injection/) · [Provider boundaries](/docs/providers-uses-exports/) · [Native Elysia routing](/docs/routing-and-controllers/).

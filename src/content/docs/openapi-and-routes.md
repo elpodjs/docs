@@ -1,10 +1,12 @@
 ---
-title: "Route inspection and OpenAPI: let the running app describe itself"
+title: "Elysia Routes and OpenAPI with Elpod"
 label: "OpenAPI and routes"
-description: "Documentation drifts when it is written beside the application instead of from it."
+description: "Inspect native Elysia routes and generate OpenAPI information from an Elpod application without a second routing layer."
 section: runtime
 order: 90
 ---
+
+Elpod can inspect native Elysia routes in a Bun application and expose OpenAPI information. Use route schemas and inspection when clients and operators need a trustworthy API inventory; keep business semantics in the application.
 
 ## The idea
 
@@ -59,3 +61,7 @@ This registers native `GET /openapi.json` by default. Pass `path` to change it. 
 ## Production notes
 
 Treat the document as a contract artifact: review it, version it, and add examples/descriptions with Elysia `detail`. OpenAPI generation does not validate authorization, data classification, or backwards compatibility.
+
+## Related concepts
+
+[Routing and controllers](/docs/routing-and-controllers/) · [Elysia plugins](/docs/plugins/) · [Testing](/docs/testing/).

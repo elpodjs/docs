@@ -1,10 +1,12 @@
 ---
-title: "Health and graceful shutdown: enter and leave like a good guest"
+title: "Health Checks and Graceful Shutdown in Elpod"
 label: "Health and shutdown"
-description: "“The process is alive” and “the process should receive traffic” are different questions."
+description: "Expose liveness and readiness routes and close Elpod resources predictably when a Bun application shuts down."
 section: runtime
 order: 80
 ---
+
+Elpod exposes health and lifecycle primitives for Bun services built with Elysia. Use liveness and readiness checks to tell a deployment platform when the process can serve, and dispose managed resources during shutdown.
 
 ## The idea
 
@@ -41,3 +43,7 @@ Defaults are `/health/live` and `/health/ready`; both can be changed. Checks rec
 ## Production notes
 
 Configure orchestrator grace periods longer than the expected drain, use readiness to remove instances from traffic, and make checks cheap and bounded. Health routes are not authentication or a full dependency-monitoring system; protect detailed diagnostics and keep responses minimal.
+
+## Related concepts
+
+[Deployment](/docs/deployment/) · [Provider lifetimes](/docs/dependency-injection/) · [Observability](/docs/observability/).

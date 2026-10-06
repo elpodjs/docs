@@ -1,10 +1,12 @@
 ---
-title: "Brute-force protection and signed URLs: slow the guessing, sign the invitation"
+title: "Brute Force Protection and Signed URLs"
 label: "Brute force and signed URLs"
-description: "Brute-force protection makes repeated guesses expensive."
+description: "Use explicit Elpod security boundaries for repeated login attempts and time-limited URL signatures in Elysia APIs."
 section: security
 order: 60
 ---
+
+Elpod exposes security boundaries for repeated attempts and signed links in Elysia APIs on Bun. Use them when login or temporary URL flows need explicit policies and shared state appropriate to the deployment.
 
 ## The idea
 
@@ -50,3 +52,7 @@ const verified = await verifySignedUrl(url, secret);
 ## Production notes
 
 Use a shared store for lockout state, protect signing keys, set short expiries, include resource and tenant context in the signed material, and authorize the resource after verification. Signed URLs do not encrypt data or revoke a link before expiry.
+
+## Related concepts
+
+[Authentication](/docs/security/authentication/) · [Rate limiting](/docs/security/rate-limiting/) · [Security overview](/docs/security/overview/).

@@ -1,10 +1,12 @@
 ---
-title: "Typed configuration: turn environment strings into decisions"
+title: "Typed Configuration for Elpod Applications"
 label: "Configuration"
-description: "Environment variables arrive as strings, but your application needs decisions: a port is a number, a timeout has a unit, a URL has a protocol, and a database password must not appear in logs."
+description: "Validate Bun environment variables at startup with Elpod configuration helpers and inject application settings through providers."
 section: foundations
 order: 80
 ---
+
+Elpod validates runtime configuration before a Bun and Elysia application starts serving requests. Use typed configuration when environment strings control ports, timeouts, credentials, or other settings that must fail clearly when invalid.
 
 ## The idea
 
@@ -55,3 +57,7 @@ Use it for all startup choices that change behavior: ports, URLs, timeouts, cred
 ## Production notes
 
 Configuration validation confirms shape, not connectivity or authorization. A URL can be reachable but point at the wrong tenant or environment. Use readiness checks for dependencies and keep secret injection in your deployment system.
+
+## Related concepts
+
+[Provider boundaries](/docs/providers-uses-exports/) · [Deployment](/docs/deployment/) · [Testing](/docs/testing/).

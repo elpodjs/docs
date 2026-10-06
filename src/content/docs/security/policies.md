@@ -1,10 +1,12 @@
 ---
-title: "Policies: turn permission into a named decision"
+title: "Authorization Policies in Elpod"
 label: "Policies"
-description: "Roles are coarse labels."
+description: "Represent authorization decisions as explicit policies near domain actions in a Bun and Elysia backend."
 section: security
 order: 80
 ---
+
+An Elpod policy makes an authorization decision explicit near a domain action, even when that action is called outside an Elysia route. Use policies when roles alone cannot express resource and tenant permissions in a Bun service.
 
 ## The idea
 
@@ -38,3 +40,7 @@ Use policies when access depends on both identity and resource state. Keep them 
 ## Production notes
 
 Policies are application code. Review them like business-critical code, test allow and deny cases, and decide whether unauthorized and not-found should be indistinguishable for your threat model.
+
+## Related concepts
+
+[Authentication](/docs/security/authentication/) · [Tenancy](/docs/security/tenancy/) · [Security overview](/docs/security/overview/).

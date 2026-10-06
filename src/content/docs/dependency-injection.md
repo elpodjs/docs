@@ -1,12 +1,14 @@
 ---
-title: "Dependency injection: bring the right tools to the work"
+title: "Dependency Injection for Elysia and Bun"
 label: "Dependency injection"
-description: "Picture a workshop."
+description: "Elpod uses explicit constructor dependency injection without decorators or reflection. Learn provider registration, lifetimes, request scope, and overrides."
 section: foundations
 order: 40
 ---
 
 ## The idea
+
+Dependency injection supplies a class with its collaborators from outside. In a Bun and Elysia service, Elpod uses a declared provider graph to construct controllers and services without decorators or runtime type reflection. Use it when services need shared resources, test substitutes, or clear lifetime ownership. See [provider boundaries](/docs/providers-uses-exports/), [feature pods](/docs/features-and-pods/), and [testing](/docs/testing/).
 
 Picture a workshop. A repair job should receive the wrench, diagnostic reader, and spare parts it needs. It should not wander through a global cupboard, guess where tools live, or secretly create a new database connection. That is dependency injection: give an object its collaborators from the outside.
 
@@ -96,3 +98,5 @@ Use `disposeBootstrap(server)` or `TestApplication.dispose()` exactly once at th
 ## Production notes
 
 DI manages object ownership and startup order; it does not pool connections, retry transactions, or make a provider thread-safe. Choose lifetimes based on actual state and concurrency. For external resources, make close behavior explicit and test disposal.
+
+For a complete controller, service, and pod example, see [getting started](/docs/getting-started/). For the route boundary, see [native Elysia routing](/docs/routing-and-controllers/).

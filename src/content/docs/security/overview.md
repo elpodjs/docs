@@ -1,10 +1,12 @@
 ---
-title: "Security overview: trust is earned at the boundary"
+title: "Security Boundaries in Elpod Applications"
 label: "Security overview"
-description: "Security is not one lock on the front door."
+description: "Map authentication, sessions, authorization, tenancy, rate limiting, and CSRF to explicit Elysia and Elpod application boundaries."
 section: security
 order: 10
 ---
+
+Elpod organizes security decisions around native Elysia routes and application services on Bun. Use this map to decide where identity, sessions, authorization, tenant checks, and rate limits belong before choosing concrete adapters.
 
 ## The idea
 

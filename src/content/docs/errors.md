@@ -1,10 +1,12 @@
 ---
-title: "Errors and native responses: speak clearly when a request fails"
+title: "Structured Errors and Native Responses in Elpod"
 label: "Errors and responses"
-description: "An error is part of your API’s conversation with its caller."
+description: "Return native Elysia responses and use Elpod error helpers to make API failures consistent and observable."
 section: runtime
 order: 10
 ---
+
+Elpod supplies structured error helpers around native Elysia responses on Bun. Use them when callers and logs need predictable status, message, and request identity while keeping response behavior visible at the route boundary.
 
 ## The idea
 
@@ -61,3 +63,7 @@ Use native responses for downloads, redirects, SSE, and streams. Use `ElpodError
 ## Production notes
 
 Map errors to stable codes and document them in OpenAPI. Log internal causes through a controlled logger, not in the response. The serializer is a safety boundary, not a domain error taxonomy or a replacement for redaction in your own logs.
+
+## Related concepts
+
+[Routing and controllers](/docs/routing-and-controllers/) · [Observability](/docs/observability/) · [Testing](/docs/testing/).

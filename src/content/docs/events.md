@@ -1,10 +1,12 @@
 ---
-title: "Events: announce facts, don’t summon strangers"
+title: "Events and Domain Workflows in Elpod"
 label: "Events"
-description: "Use typed domain events, a transactional outbox, and durable consumer idempotency for production workflows."
+description: "Structure typed domain events in an Elpod application while keeping durable delivery, outbox, and consumers application-owned."
 section: runtime
 order: 40
 ---
+
+Elpod event boundaries let Bun and Elysia application services announce typed domain facts. Use them to decouple in-process workflows; select an outbox and durable broker when delivery must survive restarts.
 
 ## Why use events?
 
@@ -136,3 +138,7 @@ For external services such as email or payments, pass the event ID as that provi
 `EventBus` is useful inside one process, especially after a worker receives a message. It is not a durable broker. For an event that follows a database write, use the outbox path above; for a purely local notification, use `EventBus` directly.
 
 That is the whole idea: write the important fact once, deliver it safely in the background, and let new consumers join without turning the original service into a tangle.
+
+## Related concepts
+
+[Jobs and queues](/docs/jobs/) · [Provider boundaries](/docs/providers-uses-exports/) · [Testing](/docs/testing/).

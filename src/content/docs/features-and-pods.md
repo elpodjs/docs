@@ -1,12 +1,14 @@
 ---
-title: "Features and pods: give each idea a home"
+title: "Feature Pods and Modular Elysia Architecture"
 label: "Features and pods"
-description: "Imagine a busy food market."
+description: "A pod is an Elpod feature boundary grouping a native Elysia controller, URL prefix, providers, and explicit imports and exports."
 section: foundations
 order: 30
 ---
 
 ## The idea
+
+In Elpod, a pod is an in-process feature composition boundary for a Bun and Elysia application. It groups one controller, a route prefix, local providers, and optional imports and exports. Use pods when the growing application needs named ownership of routes and services. The [project structure guide](/docs/project-structure/) shows how to lay out files, while [provider boundaries](/docs/providers-uses-exports/) explain cross-feature dependencies.
 
 Imagine a busy food market. “Users”, “billing”, and “reports” are different stalls. Each stall has its own menu, tools, and counter, but the market still has one entrance and one set of safety rules. A feature is one stall. A pod is its signboard and setup sheet.
 

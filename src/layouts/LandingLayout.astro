@@ -2,7 +2,14 @@
 import "../styles/tokens.css";
 import "../styles/global.css";
 
-const { title = "Elpod — Structure for Elysia on Bun", description = "Elpod adds explicit dependency injection, feature pods, lifecycle boundaries, and architecture checks around native Elysia routes on Bun." } = Astro.props;
+const { title = "Elpod: Modular Elysia Framework for Bun", description = "Elpod is an early-stage, decorator-free application framework for Bun and Elysia with explicit constructor DI, feature pods, and native Elysia routes." } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const structuredData = [
+  { "@context": "https://schema.org", "@type": "WebSite", "@id": "https://elpod.vercel.app/#website", name: "Elpod", url: "https://elpod.vercel.app/", description },
+  { "@context": "https://schema.org", "@type": "Organization", "@id": "https://elpod.vercel.app/#organization", name: "ElpodJS", url: "https://github.com/elpodjs", sameAs: ["https://github.com/elpodjs", "https://github.com/elpodjs/core", "https://github.com/elpodjs/docs"] },
+  { "@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://elpod.vercel.app/#software", name: "Elpod", applicationCategory: "DeveloperApplication", description, url: "https://elpod.vercel.app/", sameAs: "https://github.com/elpodjs/core", runtimePlatform: "Bun >=1.4", license: "https://opensource.org/licenses/MIT", isPartOf: { "@id": "https://elpod.vercel.app/#website" } },
+  { "@context": "https://schema.org", "@type": "SoftwareSourceCode", "@id": "https://elpod.vercel.app/#source", name: "@elpod/core", url: "https://github.com/elpodjs/core", codeRepository: "https://github.com/elpodjs/core", programmingLanguage: "TypeScript", runtimePlatform: "Bun >=1.4", license: "https://opensource.org/licenses/MIT" },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -15,8 +22,15 @@ const { title = "Elpod — Structure for Elysia on Bun", description = "Elpod ad
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL("/elpod-og.png", Astro.site)} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL("/elpod-og.png", Astro.site)} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href="/elpod-mark.png" />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

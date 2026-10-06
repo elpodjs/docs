@@ -1,10 +1,12 @@
 ---
-title: "Bring your own ORM"
+title: "Database and Migration Boundaries in Elpod"
 label: "Bring your own ORM"
-description: "Choose an ORM or driver; Elpod stays out of schema, query, and migration ownership."
+description: "Use your own database driver or ORM with Elpod providers; application code owns migrations, transactions, and deployment policy."
 section: runtime
 order: 20
 ---
+
+Elpod does not prescribe a database driver or ORM for Elysia on Bun. Register your chosen client as a provider when services need explicit ownership of connections and test substitutes; keep schema and migration policy in the application.
 
 ## The idea
 
@@ -46,3 +48,7 @@ The selected persistence tool owns schema and migrations. For example, Prisma ow
 ## Production notes
 
 Choose pool sizing, TLS, credentials, transaction isolation, backups, replicas, schema ownership, and lock semantics in the ORM, driver, and deployment layer. Keep migration rollback an application-specific data operation, not a universal undo guarantee.
+
+## Related concepts
+
+[Provider boundaries](/docs/providers-uses-exports/) · [Testing](/docs/testing/) · [Graceful shutdown](/docs/health-and-shutdown/).

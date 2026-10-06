@@ -1,10 +1,12 @@
 ---
-title: "CLI: the launch console"
+title: "Elpod CLI: Audit, Doctor, Routes, and Generation"
 label: "CLI"
-description: "The CLI is the launch console for the conventions in your repository."
+description: "Use @elpod/cli to generate features, inspect Elysia routes, and validate architecture and deployment assumptions."
 section: operations
 order: 10
 ---
+
+The Elpod CLI helps Bun and Elysia teams inspect their application structure. Use it to generate a feature, list native routes, diagnose configuration, and audit the provider graph before release.
 
 ## The idea
 
@@ -60,3 +62,7 @@ elpod openapi > openapi.json
 ## Production notes
 
 Make `seal`, `audit --production --strict`, typecheck, tests, and your deployment-specific checks release gates. Read findings rather than suppressing them; warnings often identify missing ownership decisions.
+
+## Related concepts
+
+[Project structure](/docs/project-structure/) · [Routing and controllers](/docs/routing-and-controllers/) · [Deployment](/docs/deployment/).

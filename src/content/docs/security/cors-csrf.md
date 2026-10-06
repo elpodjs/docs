@@ -1,10 +1,12 @@
 ---
-title: "CORS and CSRF: two guards with different jobs"
+title: "CORS and CSRF in Elysia Applications"
 label: "CORS and CSRF"
-description: "Two guards are often confused."
+description: "Understand CORS and CSRF as separate controls and configure them at native Elysia HTTP boundaries in an Elpod app."
 section: security
 order: 40
 ---
+
+CORS controls browser cross-origin access, while CSRF protects state-changing requests that rely on ambient credentials. Configure these separately at native Elysia boundaries in an Elpod application on Bun.
 
 ## The idea
 
@@ -41,3 +43,7 @@ Use a narrow explicit origin list for browser applications. If credentials are e
 ## Production notes
 
 Keep origins environment-specific, configure proxies to preserve the intended origin, use TLS, and validate cookies and CSRF tokens server-side. CORS does not stop non-browser clients.
+
+## Related concepts
+
+[Authentication](/docs/security/authentication/) · [Sessions](/docs/security/sessions/) · [Security overview](/docs/security/overview/).

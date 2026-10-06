@@ -1,10 +1,12 @@
 ---
-title: "Plugins and bootstrap configuration: add crew without hiding the ship"
+title: "Elysia Plugins and Elpod Bootstrap"
 label: "Plugins"
-description: "An extension should be easy to answer two questions about: “What does it install?” and “When does it run?” Elpod keeps both answers visible."
+description: "Compose native Elysia plugins with Elpod application providers and explicit bootstrap configuration on Bun."
 section: foundations
 order: 70
 ---
+
+Elpod composes Elysia plugins with explicit application providers and bootstrap configuration on Bun. Use plugins for native Elysia capabilities while keeping plugin order and dependency ownership visible.
 
 ## The idea
 
@@ -51,3 +53,7 @@ Use `configure` for local application wiring such as health routes, OpenAPI rout
 ## Production notes
 
 Elpod does not validate the security or correctness of a plugin’s native Elysia code. Keep plugin order reviewable, test the composed app, and avoid plugins that log credentials or request bodies.
+
+## Related concepts
+
+[Routing and controllers](/docs/routing-and-controllers/) · [Provider boundaries](/docs/providers-uses-exports/) · [Configuration](/docs/configuration/).

@@ -1,7 +1,7 @@
 ---
-title: "Getting started: your first Elpod mission"
+title: "Get Started with Elpod on Bun and Elysia"
 label: "Getting started"
-description: "A new web service usually starts as one route and one file."
+description: "Create an Elpod application with bun create elpod, then build a typed Elysia route with a controller, service, and feature pod."
 section: foundations
 order: 10
 ---
@@ -133,12 +133,16 @@ console.log(`listening on http://localhost:${server.server?.port}`);
 ## Common mistakes
 
 - Forgetting to add a pod to `application({ features })`; the architecture seal catches unwired feature folders.
-- Importing from internal `src/kernel` paths in an application. Import from `elpod` and use Elysia from `elysia`.
+- Importing from internal `src/kernel` paths in an application. Import from `@elpod/core` and use Elysia from `elysia`.
 - Expecting decorators, automatic file discovery, or a generated router. Wiring is intentionally explicit.
 - Starting with `bun --watch` in a production container. Use `elpod start` or `bun src/main.ts` and run the audit.
 
 ## Production notes
 
-Pin `elpod`, `elysia`, and Bun. Keep secrets out of source control and validate environment values at startup. Add readiness checks, request limits, authentication, authorization, logs, metrics, traces, and a deployment-specific database/broker strategy. Elpod supplies boundaries and diagnostics; it does not make those choices for your service.
+Pin `@elpod/core`, `elysia`, and Bun. Keep secrets out of source control and validate environment values at startup. Add readiness checks, request limits, authentication, authorization, logs, metrics, traces, and a deployment-specific database/broker strategy. Elpod supplies boundaries and diagnostics; it does not make those choices for your service.
 
 Next: [Project structure](/docs/project-structure/).
+
+## Related concepts
+
+[Feature pods](/docs/features-and-pods/) · [Dependency injection](/docs/dependency-injection/) · [Project structure](/docs/project-structure/).

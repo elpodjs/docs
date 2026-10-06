@@ -1,10 +1,12 @@
 ---
-title: "Authentication: who is knocking?"
+title: "Authentication in Elpod and Elysia"
 label: "Authentication"
-description: "Authentication answers “who are you?” It does not answer “may you edit this invoice?” That second question belongs to authorization."
+description: "Identify callers with Elysia request hooks and explicit Elpod providers; choose and operate your own identity system."
 section: security
 order: 20
 ---
+
+Authentication in an Elpod application identifies the caller at a native Elysia request boundary. Use explicit providers and hooks when a Bun service needs bearer tokens, API keys, or another identity mechanism; the application owns credential validation.
 
 ## The idea
 
@@ -59,3 +61,7 @@ Use bearer authentication for APIs backed by an external issuer, API keys for se
 ## Production notes
 
 Elpod does not implement a token format, key rotation, OAuth, MFA, revocation, or user lookup. Use your provider’s verified SDK, validate claims, enforce authorization with policies, and protect secret material.
+
+## Related concepts
+
+[Sessions](/docs/security/sessions/) · [Authorization policies](/docs/security/policies/) · [Security overview](/docs/security/overview/).

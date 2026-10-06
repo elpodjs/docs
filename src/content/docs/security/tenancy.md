@@ -1,10 +1,12 @@
 ---
-title: "Tenancy: keep neighborhoods from sharing mail"
+title: "Multi-Tenant Boundaries in Elpod"
 label: "Tenancy"
-description: "In a multi-tenant system, “the current customer” is part of almost every decision."
+description: "Resolve tenant identity at the request boundary and enforce tenant authorization in application services and data access."
 section: security
 order: 70
 ---
+
+Multi-tenant Elpod services must resolve tenant identity before domain work and apply it to data access. Use native Elysia request context and explicit policies to avoid treating a URL prefix as a tenant boundary.
 
 ## The idea
 
@@ -45,3 +47,7 @@ Use `tenantKey(tenant.id, key)` for namespaced cache/lock keys and `tenantCache(
 ## Production notes
 
 Resolve tenants from a verified identity or trusted routing layer, enforce membership and resource access, isolate database queries, and carry tenant IDs explicitly into async work. Test that cross-tenant reads and writes fail.
+
+## Related concepts
+
+[Authorization policies](/docs/security/policies/) · [Authentication](/docs/security/authentication/) · [Security overview](/docs/security/overview/).

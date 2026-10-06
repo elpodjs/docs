@@ -1,10 +1,12 @@
 ---
-title: "Observability: leave breadcrumbs for future you"
+title: "Observability for Bun and Elysia Applications"
 label: "Observability"
-description: "Production is a dark forest when all you have is “it failed”."
+description: "Add logs, metrics, request IDs, and tracing boundaries to Elpod applications; wire vendor exporters through application providers."
 section: runtime
 order: 70
 ---
+
+Elpod provides request identity and observability boundaries for native Elysia routes on Bun. Use them to connect application logs, metrics, and traces to your chosen telemetry SDK and exporter.
 
 ## The idea
 
@@ -53,3 +55,7 @@ You still install/configure the SDK, exporters, resource attributes, sampling, a
 ## Production notes
 
 Use sampling and retention appropriate to your data policy, redact at the adapter boundary, and make telemetry failures non-blocking. Correlate logs, traces, and metrics with request/correlation IDs, but do not make those IDs authorization credentials.
+
+## Related concepts
+
+[Errors](/docs/errors/) · [Health and shutdown](/docs/health-and-shutdown/) · [Deployment](/docs/deployment/).

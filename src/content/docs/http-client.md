@@ -1,10 +1,12 @@
 ---
-title: "Outbound HTTP client: make the network say “not today” safely"
+title: "Outbound HTTP Clients in Elpod"
 label: "HTTP client"
-description: "Every outbound call can be slow, huge, redirected, unavailable, or aimed at the wrong place."
+description: "Use explicit HTTP client providers in Elpod to control timeouts, retries, request limits, and external service dependencies."
 section: runtime
 order: 60
 ---
+
+Outbound HTTP dependencies in an Elpod application are explicit providers rather than hidden calls from Elysia handlers. Use this boundary when external requests need timeouts, limits, retries, test substitutes, and observability.
 
 ## The idea
 
@@ -45,3 +47,7 @@ Retries default to `GET`, `HEAD`, and `OPTIONS` and transient status codes. Writ
 ## Production notes
 
 Keep `allowedOrigins` narrow, set timeouts, bound response sizes, and instrument attempts without logging secrets. SSRF defense is layered: validate application input, restrict origins, control redirects, and enforce network egress policy.
+
+## Related concepts
+
+[Provider boundaries](/docs/providers-uses-exports/) · [Configuration](/docs/configuration/) · [Testing](/docs/testing/).
