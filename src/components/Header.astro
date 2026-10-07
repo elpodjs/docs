@@ -1,6 +1,10 @@
+---
+const { docs = false } = Astro.props;
+---
 <header class="site-header">
   <a class="wordmark" href="/#top" aria-label="Elpod home">
-    <img src="/elpod-logo-dark.png" alt="Elpod" />
+    <img class="logo-light" src="/elpod-logo.png" alt="Elpod" />
+    <img class="logo-dark" src="/elpod-logo-dark.png" alt="" />
   </a>
   <nav aria-label="Primary navigation">
     <a href="/#how-it-works">How it works</a>
@@ -8,5 +12,6 @@
     <a href="/docs/">Docs</a>
   </nav>
   <a class="header-mobile-docs" href="/docs/">Docs <span aria-hidden="true">↗</span></a>
-  <a class="header-cta" href="/#get-started">Start here <span aria-hidden="true">↓</span></a>
+  <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span aria-hidden="true">☾</span><span class="theme-label">Dark mode</span></button>
+  <a class="header-cta" href={docs ? "/docs/getting-started/" : "/#get-started"}>Start here <span aria-hidden="true">↗</span></a>
 </header>

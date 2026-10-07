@@ -9,6 +9,7 @@ import "../styles/docs.css";
 
 const {
   title,
+  label,
   description,
   section,
   docId = "",
@@ -42,7 +43,12 @@ const hrefFor = (id: string) => `/docs/${id}/`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0b0d12" />
+    <meta name="theme-color" content="#fff8ed" />
+    <script is:inline>
+      try {
+        if ((localStorage.getItem('elpod-theme') ?? localStorage.getItem('elpod-docs-theme')) === 'dark') document.documentElement.dataset.theme = 'dark';
+      } catch (_) {}
+    </script>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL("/elpod-og.png", Astro.site)} />
@@ -59,7 +65,7 @@ const hrefFor = (id: string) => `/docs/${id}/`;
   </head>
   <body class:list={['docs-body', { 'docs-home-body': docId === 'index' }]}>
     <a class="skip-link" href="#doc-content">Skip to documentation</a>
-    <Header />
+    <Header docs />
     <div class="docs-shell">
       <DocsSidebar pathname={Astro.url.pathname} />
       <main class="docs-main" id="doc-content">
@@ -70,13 +76,15 @@ const hrefFor = (id: string) => `/docs/${id}/`;
         <article class="doc-prose">
           <div class:list={['docs-home-hero', { 'docs-home-hero-active': docId === 'index' }]}>
             <div>
-              <p class="section-kicker">{section} / reference</p>
-              <h1>{title}</h1>
+              <p class="section-kicker">{docId === 'index' ? 'The Elpod field guide' : `${section} / reference`}</p>
+              <h1>{docId === 'index' ? 'Build with Elpod.' : label}</h1>
               <p class="doc-description">{description}</p>
+              {docId === 'index' && <a class="docs-hero-link" href="/docs/getting-started/">Get started <span aria-hidden="true">↗</span></a>}
             </div>
             {docId === 'index' && (
               <aside class="docs-home-map" aria-label="Elpod composition map">
-                <div class="docs-home-map-label"><span>COMPOSITION MAP</span><span>01 / 03</span></div>
+                <img class="docs-home-mark" src="/elpod-mark.png" alt="" />
+                <div class="docs-home-map-label"><span>HOW IT FITS TOGETHER</span><span>01 / 03</span></div>
                 <ol>
                   <li><span><b>Elysia</b><small>native route surface</small></span></li>
                   <li><span><b>Elpod</b><small>explicit composition</small></span></li>
@@ -118,5 +126,8 @@ const hrefFor = (id: string) => `/docs/${id}/`;
         </footer>
       </main>
     </div>
+  <script>
+    import "../scripts/theme.ts";
+  </script>
   </body>
 </html>

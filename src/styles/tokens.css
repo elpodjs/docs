@@ -1,19 +1,19 @@
 :root {
-  --sp-bg: #0a0b0d;
-  --sp-surface: #111317;
-  --sp-surface-2: #181b20;
-  --sp-surface-3: #20242a;
-  --sp-border: rgba(235, 232, 222, 0.12);
-  --sp-border-strong: rgba(235, 232, 222, 0.28);
-  --sp-text: #eeeae0;
-  --sp-muted: rgba(238, 234, 224, 0.68);
-  --sp-faint: rgba(238, 234, 224, 0.4);
-  --sp-accent: #d7a52e;
-  --sp-accent-bright: #f0c85b;
-  --sp-elysia: #9990e8;
-  --sp-ready: #4ade80;
-  --sp-warn: #fbbf24;
-  --sp-radius: 3px;
+  --sp-bg: #fff8ed;
+  --sp-surface: #fffdf8;
+  --sp-surface-2: #f9ede0;
+  --sp-surface-3: #f2dfcf;
+  --sp-border: #e9d9c9;
+  --sp-border-strong: #d9bdab;
+  --sp-text: #34150f;
+  --sp-muted: #674d42;
+  --sp-faint: #846b60;
+  --sp-accent: #a54638;
+  --sp-accent-bright: #8e352a;
+  --sp-elysia: #925268;
+  --sp-ready: #397655;
+  --sp-warn: #a54638;
+  --sp-radius: 12px;
   --sp-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   --sp-font: "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --sp-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -27,4 +27,21 @@
   --sp-space-4: 40px;
   --sp-space-5: 64px;
   --sp-space-6: 96px;
+}
+
+:root[data-theme="dark"] {
+  --sp-bg: #20120f;
+  --sp-surface: #2b1b17;
+  --sp-surface-2: #35211c;
+  --sp-surface-3: #432b23;
+  --sp-border: #50372e;
+  --sp-border-strong: #775044;
+  --sp-text: #fff4e9;
+  --sp-muted: #d7beb0;
+  --sp-faint: #b69a8c;
+  --sp-accent: #ffa18b;
+  --sp-accent-bright: #ffc5b2;
+  --sp-elysia: #e5a9ba;
+  --sp-ready: #8ac69b;
+  --sp-warn: #ffa18b;
 }

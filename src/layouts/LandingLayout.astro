@@ -1,6 +1,7 @@
 ---
 import "../styles/tokens.css";
 import "../styles/global.css";
+import "../styles/landing.css";
 
 const { title = "Elpod: Modular Elysia Framework for Bun", description = "Elpod is an early-stage, decorator-free application framework for Bun and Elysia with explicit constructor DI, feature pods, and native Elysia routes." } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -17,7 +18,12 @@ const structuredData = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0b0d12" />
+    <meta name="theme-color" content="#fff8ed" />
+    <script is:inline>
+      try {
+        if ((localStorage.getItem('elpod-theme') ?? localStorage.getItem('elpod-docs-theme')) === 'dark') document.documentElement.dataset.theme = 'dark';
+      } catch (_) {}
+    </script>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL("/elpod-og.png", Astro.site)} />
@@ -35,5 +41,8 @@ const structuredData = [
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <slot />
+    <script>
+      import "../scripts/theme.ts";
+    </script>
   </body>
 </html>
